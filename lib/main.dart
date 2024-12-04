@@ -22,8 +22,9 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "WhatsApp",
-      theme: ThemeData(primaryColor: Colors.green,
+      title: "Whatsapp",
+      theme: ThemeData(
+        primaryColor: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -61,24 +62,23 @@ class _MainAppState extends State<MainApp> {
 }
 
 Widget languageList() {
-  return
-    Expanded(
-      child: ListView.builder(
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            leading: IconButton(
-              icon: Icon(Icons.circle_outlined),
-              onPressed: () {},
-            ),
-            title: Text(
-              "Language $index",
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {},
-            subtitle: Text("Language name in English"),
-          );
-        },
-        itemCount: 40,
-      ),
-    );
+  return Expanded(
+    child: ListView.builder(
+      itemBuilder: (BuildContext context, int index) {
+        return ListTile(
+          leading: IconButton(
+            icon: Icon(Icons.circle_outlined),
+            onPressed: () {},
+          ),
+          title: Text(
+            "Language $index",
+            style: TextStyle(color: Colors.black),
+          ),
+          onTap: () {},
+          subtitle: Text("Language name in English"),
+        );
+      },
+      itemCount: 40,
+    ),
+  );
 }

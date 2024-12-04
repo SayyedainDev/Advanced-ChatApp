@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:wa_business/Screens/chats.dart';
 import 'package:wa_business/Screens/Login_screen.dart';
 import 'package:wa_business/Screens/add_contacts.dart';
 import 'package:get/get.dart';
@@ -103,17 +104,33 @@ class _ContactsState extends State<Contacts> {
                 return Padding(
                   padding: EdgeInsets.all(screen_width * 0.012),
                   child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(50)),
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        child: Text(data[index]["name"][0]),
-                      ),
-                      title: Text(data[index]["name"]),
-                      subtitle: Text(data[index]["phone"]),
-                    ),
-                  ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(50)),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ChatPage(
+                                contactPhoneNumber: data[index]["phone"],
+                                currentUserId:
+                                    FirebaseAuth.instance.currentUser!.uid,
+                                contactName: data[index]
+                                    ["name"], // Pass contact name
+                                contactId: data[index].id, // Pass contact ID
+                              ),
+                            ),
+                          );
+                        },
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            child: Text(data[index]["name"][0]),
+                          ),
+                          title: Text(data[index]["name"]),
+                          subtitle: Text(data[index]["phone"]),
+                        ),
+                      )),
                 );
               },
             );

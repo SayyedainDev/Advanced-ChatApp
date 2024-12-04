@@ -45,10 +45,9 @@ class _Screen3State extends State<Screen3> with SingleTickerProviderStateMixin {
         home: Scaffold(
           appBar: AppBar(
             title: Text("WhatsApp"),
-            actions: [IconButton(onPressed: () {},
-                icon: Icon(Icons.search)),
-              IconButton(onPressed: () {},
-                  icon: Icon(Icons.more_vert)),
+            actions: [
+              IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+              IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
             ],
             backgroundColor: Colors.green,
             bottom: TabBar(
@@ -61,7 +60,6 @@ class _Screen3State extends State<Screen3> with SingleTickerProviderStateMixin {
             controller: _tabController,
             children: [
               Camera(),
-              Chats(),
               Status(),
               Calls(),
             ],
